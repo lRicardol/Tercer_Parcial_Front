@@ -1,24 +1,37 @@
-import logo from './logo.svg';
+// App.js
+import React from 'react';
 import './App.css';
+import { BrowserRouter as Router, Routes, Route, Link } from 'react-router-dom';
+
+// Páginas (crearás estas en src/pages)
+import Especialidades from './pages/Especialidades';
+import CrearCita from './pages/CrearCita';
+import Historial from './pages/Historial';
+import CancelarCita from './pages/CancelarCita';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div>
+        <header>
+          ECI Salud Vital - Sistema de Citas
+        </header>
+        <nav>
+          <Link to="/">Especialidades</Link>
+          <Link to="/crear">Programar Cita</Link>
+          <Link to="/historial">Historial</Link>
+          <Link to="/cancelar">Cancelar Cita</Link>
+        </nav>
+        <div className="container">
+          <Routes>
+            <Route path="/" element={<Especialidades />} />
+            <Route path="/crear" element={<CrearCita />} />
+            <Route path="/historial" element={<Historial />} />
+            <Route path="/cancelar" element={<CancelarCita />} />
+          </Routes>
+        </div>
+      </div>
+    </Router>
   );
 }
 
